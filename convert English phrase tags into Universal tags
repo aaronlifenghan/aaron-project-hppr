@@ -1,0 +1,128 @@
+#!/usr/bin/perl -w  
+########################################################################################################################################################################################
+##    For a detailed description of this evaluation metric and source code, please read:                                                                                           #####
+##    This code is to convert the english phrase tags (by Berkeley parser) into universal phrase tags.                                                                             #####
+##    Universal phrase tagset is proposed by Aaron Li-Feng Han, Derek F. Wong, Lidia S. Chao, Liangye He, Shuo Li, and Ling Zhu in University of Macau                             #####
+##    This perl code is  written by Aaron Li-Feng Han in university of macau, 2013.02                                                                                              #####
+##    All Copyright (c) preserved by the authors. Corresponding author: Aaron Li-Feng Han < hanlifengaaron@gmail.com >                                                             #####
+##    Please cite paper below if you use the universal phrase tagset or source code in your research work                                                                          #####
+##    "Phrase Tagset Mapping for French and English Treebanks and Its Application in Machine Translation Evaluation". 2013. Aaron Li-Feng Han, Derek F. Wong, Lidia S. Chao,       #####
+##    Liangye He, Shuo Li, and Ling Zhu. Proceedings of the GSCL 2013, Germany. LNCS Vol. 8105, pp. 119–131. Volume Editors: Iryna Gurevych, Chris Biemann and Torsten Zesch.      #####
+##    Source code website: https://github.com/aaronlifenghan/aaron-project-hppr                                                                                                    #####
+##    Online paper: http://www.springer.com/computer/database+management+%26+information+retrieval/book/978-3-642-40721-5                                                          #####
+########################################################################################################################################################################################
+##    How to use this Perl code.                                                                                                                                                   #####
+##    1. Put you original documents containing the english phrase tags under the address in Line 20, 29, 31 of this Perl code.                                                     #####
+##    2. The document containing converted universal phrase tags will be shown under the address in Line 32 of this Perl code.                                                     #####
+##                                                                                                                                                                                 #####
+########################################################################################################################################################################################
+
+opendir (DIR, "D:\\AaronLiFengHan\\test NLEPOMS2\\UniDeal_ppos2012\\system-outputs\\newstest2012\\fr-en\\parsed.ppos") || die "can not open output file!"; ##Put you original documents containing the english phrase tags under the address 
+
+@filename=readdir(DIR);
+
+closedir (DIR);
+
+foreach $file (@filename)
+  {
+
+		if(!(-d "D:\\AaronLiFengHan\\test NLEPOMS2\\UniDeal_ppos2012\\system-outputs\\newstest2012\\fr-en\\parsed.ppos\\$file")) ##Put you original documents containing the english phrase tags under the address 
+			{
+				open (TEST,"<:encoding(utf8)","D:\\AaronLiFengHan\\test NLEPOMS2\\UniDeal_ppos2012\\system-outputs\\newstest2012\\fr-en\\parsed.ppos\\$file") || die "can not open file: $!";##Put you original documents containing the english phrase tags under the address 
+				open (RESULT,">:encoding(utf8)","D:\\AaronLiFengHan\\test NLEPOMS2\\UniDeal_ppos2012\\system-outputs\\newstest2012\\fr-en\\parsed.ppos\\Uni_ppos_$file.txt") || die "$!";##The document containing converted universal phrase tags will be shown under the address
+				
+				$i=0;
+				$str0="";
+				@arry_1= ();
+				@arry_sys_length= ();
+				@arrytwo_sys_translation= ();
+				$sentence_num=0;
+				while($str0=<TEST>)                       #### put the system translation into a two dimension array @arrytwo_sys_translation
+					{
+						chomp($str0);
+						## $str0= lc ($str0);   ### both reference and system output translation is turned into lowwer case
+						@arry_1= split(/\s+/,$str0);
+						$arry_sys_length[$i]=scalar(@arry_1);       #### @arry_sys_length store the lengths of every sentence(line) of the system translation.
+						$i++;
+						push @arrytwo_sys_translation, [@arry_1];
+						@arry_1= ();
+					}
+				$sentence_num=$i;
+				close TEST;
+					
+					
+				for($i=0;$i<$sentence_num;$i++)        #####  Change the original phrase tag into the universal type uning mappings  
+					{
+						for($j=0;$j<$arry_sys_length[$i];$j++)
+							{
+								if($arrytwo_sys_translation[$i][$j] eq NP||$arrytwo_sys_translation[$i][$j] eq NAC||$arrytwo_sys_translation[$i][$j] eq NX||$arrytwo_sys_translation[$i][$j] eq WHNP||$arrytwo_sys_translation[$i][$j] eq QP)
+								#if(grep(/^$arrytwo_sys_translation[$i][$j]/, @record_label))
+									{
+										$arrytwo_sys_translation[$i][$j]=NP;
+									}
+								elsif($arrytwo_sys_translation[$i][$j] eq VP)
+									{
+										$arrytwo_sys_translation[$i][$j]=VP;
+									}
+								elsif($arrytwo_sys_translation[$i][$j] eq ADJP||$arrytwo_sys_translation[$i][$j] eq WHADJP)
+									{
+										$arrytwo_sys_translation[$i][$j]=AJP;
+									}
+								elsif($arrytwo_sys_translation[$i][$j] eq ADVP||$arrytwo_sys_translation[$i][$j] eq WHAVP||$arrytwo_sys_translation[$i][$j] eq PRT)
+									{
+										$arrytwo_sys_translation[$i][$j]=AVP;
+									}
+								elsif($arrytwo_sys_translation[$i][$j] eq PP||$arrytwo_sys_translation[$i][$j] eq WHPP)
+									{
+										$arrytwo_sys_translation[$i][$j]=PP;
+									}
+								elsif($arrytwo_sys_translation[$i][$j] eq S||$arrytwo_sys_translation[$i][$j] eq SBAR||$arrytwo_sys_translation[$i][$j] eq SBARQ||$arrytwo_sys_translation[$i][$j] eq SINV||$arrytwo_sys_translation[$i][$j] eq SQ||$arrytwo_sys_translation[$i][$j] eq PRN||$arrytwo_sys_translation[$i][$j] eq FRAG||$arrytwo_sys_translation[$i][$j] eq RRC)
+									{
+										$arrytwo_sys_translation[$i][$j]=S;
+									}
+								# elsif($arrytwo_sys_translation[$i][$j] eq QP)
+									# {
+										# $arrytwo_sys_translation[$i][$j]=NUMP;
+									# }
+								elsif($arrytwo_sys_translation[$i][$j] eq CONJP)
+									{
+										$arrytwo_sys_translation[$i][$j]=CONJP;
+									}
+								elsif($arrytwo_sys_translation[$i][$j] eq UCP)
+									{
+										$arrytwo_sys_translation[$i][$j]=COP;
+									}
+								elsif($arrytwo_sys_translation[$i][$j] eq X||$arrytwo_sys_translation[$i][$j] eq INTJ||$arrytwo_sys_translation[$i][$j] eq LST)
+									{
+										$arrytwo_sys_translation[$i][$j]=X;
+									}
+								# elsif($arrytwo_sys_translation[$i][$j] eq FM||$arrytwo_sys_translation[$i][$j] eq ITJ||$arrytwo_sys_translation[$i][$j] eq TRUNC||$arrytwo_sys_translation[$i][$j] eq XY)
+									# {
+										# $arrytwo_sys_translation[$i][$j]=CCP;
+									# }
+								# elsif($arrytwo_sys_translation[$i][$j] eq "\$*LRB*"||$arrytwo_sys_translation[$i][$j] eq "\$("||$arrytwo_sys_translation[$i][$j] eq "\$,"||$arrytwo_sys_translation[$i][$j] eq "\$."||$arrytwo_sys_translation[$i][$j] eq "*T1*"||$arrytwo_sys_translation[$i][$j] eq "*T2*")
+									# {
+										# $arrytwo_sys_translation[$i][$j]= CH;
+									# }
+																
+								else       ##if there appear other tags that are not in the mapping set, then the strange tags will be assigned to the classification of 揦?
+									{
+										$arrytwo_sys_translation[$i][$j]= X;
+									}
+								
+							}
+					}        
+		
+				for($i=0;$i<$sentence_num;$i++)        #####  print out the changed document to have a check  
+					{
+						for($j=0;$j<$arry_sys_length[$i];$j++)
+							{
+								print RESULT "$arrytwo_sys_translation[$i][$j]"," ";
+							}
+						print RESULT "\n";
+					}
+				
+				close RESULT;
+			}
+	}
+
