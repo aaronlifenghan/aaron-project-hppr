@@ -22,7 +22,9 @@ and Ling Zhu. 2013. Proceedings of the GSCL 2013, Germany. LNCS Vol. 8105, pp. 1
 Chris Biemann and Torsten Zesch. 
 
 Source code: https://github.com/aaronlifenghan/aaron-project-hppr
+
 Download paper: http://wenku.baidu.com/view/85bd65da58f5f61fb7366670.html
+
 Final publication paper: http://www.springer.com/computer/database+management+%26+information+retrieval/book/978-3-642-40721-5
 If you use the HPPR metric in your researches, please cite the paper.
 
