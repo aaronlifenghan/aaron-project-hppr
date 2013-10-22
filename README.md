@@ -15,7 +15,7 @@ evaluation metric HPPR is proposed to test the effectiveness of the designed uni
 
 Detailed knowledge about the design of universal phrase tagset is shown in the paper "Phrase Tagset Mapping for 
 French and English Treebanks and Its Application in Machine Translation Evaluation" by Aaron Li-Feng Han, Derek F. 
-Wong, Lidia S. Chao, Liangye He, Shuo Li, and Ling Zhu. 2013. Proceedings of the GSCL 2013, Germany. LNCS Vol. 8105, 
+Wong, Lidia S. Chao, Liangye He, Shuo Li, and Ling Zhu. 2013. Proceedings of the GSCL 2013, September 23-27, Germany. LNCS Vol. 8105, 
 pp. 119–131. Volume Editors: Iryna Gurevych, Chris Biemann and Torsten Zesch. 
 
 Source code: https://github.com/aaronlifenghan/aaron-project-hppr
