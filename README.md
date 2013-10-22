@@ -2,6 +2,18 @@ aaron-project-hppr: Phrase Tagset Mapping for French and English Treebanks and I
 ==================
 
 Welcome to the aaron-project-hppr!
+
+In the paper "Phrase Tagset Mapping for French and English Treebanks and Its Application in Machine Translation Evaluation",
+a universal phrase tagset containing 9 commonly used phrasal categories is proposed, including NP (noun phrase), 
+VP (verbal phrase), AJP (adjective phrase), AVP (adverbial phrase), PP (prepositional phrase), S (sub-sentence), 
+CONJP (conjunction phrase), COP (coordinated phrase), and X (a less clear category, e.g. describing list marker, 
+foreign words, interjection, abbreviation, idiosyncratic unit, unknown or uncertain ones). The phrase tagset mapping 
+between current treebanks (French and English) tagset and the universal phrase tagset has also been designed in the paper.
+Furthermore, using the proposed universal phrase tagset and the mapping work, a novel unsupervised machine translation 
+evaluation metric HPPR is proposed.
+
+
+
 HPPR is open source, free for research purpose.
 
 HPPR: Phrase Tagset Mapping for French and English Treebanks and Its Application in Machine Translation Evaluation
