@@ -23,9 +23,8 @@ Chris Biemann and Torsten Zesch.
 
 Source code: https://github.com/aaronlifenghan/aaron-project-hppr
 
-Download paper: http://wenku.baidu.com/view/85bd65da58f5f61fb7366670.html
+Download paper: http://link.springer.com/chapter/10.1007/978-3-642-40722-2_13#
 
-Final publication paper: http://www.springer.com/computer/database+management+%26+information+retrieval/book/978-3-642-40721-5
-If you use the HPPR metric in your researches, please cite the paper.
+If you use the HPPR metric in your researches, please cite the paper. All rights reserved.
 
 Contact: hanlifengaaron AT gmail.com
