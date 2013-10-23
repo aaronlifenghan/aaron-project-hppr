@@ -3,7 +3,7 @@ A Universal Phrase Tagset
 
 Welcome to the aaron-project-hppr!
 
-A universal phrase tagset containing 9 commonly used phrasal categories is proposed in the paper "Phrase Tagset Mapping 
+A universal phrase tagset containing 9 refined and commonly used phrasal categories is proposed in the paper "Phrase Tagset Mapping 
 for French and English Treebanks and Its Application in Machine Translation Evaluation". The designed universal phrase 
 tagset contains NP (noun phrase), VP (verbal phrase), AJP (adjective phrase), AVP (adverbial phrase), PP (prepositional
 phrase), S (sub-sentence), CONJP (conjunction phrase), COP (coordinated phrase), and X (a less clear category, e.g. 
