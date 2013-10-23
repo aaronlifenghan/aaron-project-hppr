@@ -20,6 +20,8 @@ pp. 119–131. Volume Editors: Iryna Gurevych, Chris Biemann and Torsten Zesch.
 
 Source code: https://github.com/aaronlifenghan/aaron-project-hppr
 
+The phrase tagset mapping codes of other language Treebanks will be uploaded soon.
+
 Download paper: http://link.springer.com/chapter/10.1007/978-3-642-40722-2_13#!
 
 If you use the work in your researches, please cite the paper. All rights reserved.
