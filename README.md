@@ -1,29 +1,31 @@
-A Universal Phrase Tagset
-==================
+A Universal Phrase Tagset.  
+=========================
 
-Welcome to the aaron-project-hppr!
+This project contains mappings from language and Treebank specific phrase tagsets (phrase categories) to a set of 
+refined universal phrase tags, as described in the published paper: 
 
-A universal phrase tagset containing 9 refined and commonly used phrasal categories is proposed in the paper "Phrase Tagset Mapping 
-for French and English Treebanks and Its Application in Machine Translation Evaluation". The designed universal phrase 
-tagset contains NP (noun phrase), VP (verbal phrase), AJP (adjective phrase), AVP (adverbial phrase), PP (prepositional
-phrase), S (sub-sentence), CONJP (conjunction phrase), COP (coordinated phrase), and X (a less clear category, e.g. 
-describing list marker, foreign words, interjection, abbreviation, idiosyncratic unit, unknown or uncertain ones). 
-Furthermore, the refined phrase tagset mapping between current treebanks (French and English) tagset and the universal phrase 
-tagset has also been designed in the paper.
-Last, using the proposed universal phrase tagset and the mapping work, a novel unsupervised machine translation 
-evaluation metric HPPR is proposed to test the effectiveness of the designed universal phrase tagset.
-
-Detailed knowledge about the design of universal phrase tagset is shown in the paper "Phrase Tagset Mapping for 
-French and English Treebanks and Its Application in Machine Translation Evaluation" by Aaron Li-Feng Han, Derek F. 
-Wong, Lidia S. Chao, Liangye He, Shuo Li, and Ling Zhu. 2013. Proceedings of the GSCL 2013, September 23-27, Germany. LNCS Vol. 8105, 
-pp. 119–131. Volume Editors: Iryna Gurevych, Chris Biemann and Torsten Zesch. 
-
-Source code: https://github.com/aaronlifenghan/aaron-project-hppr
-
-The phrase tagset mapping codes of other language Treebanks will be uploaded soon.
-
+“Phrase Tagset Mapping for French and English Treebanks and Its Application in Machine Translation Evaluation” by 
+Aaron L.-F. Han, Derek F. Wong, Lidia S. Chao, Liangye He, Shuo Li, and Ling Zhu. 2013. Proceedings of the 25th
+international conference of the German Society for Computational Linguistics and Language Technology, September 23rd-27th,
+Darmstadt, Germany. LNCS Vol. 8105, pp. 119–131. Springer-Verlag Berlin Heidelberg. 
 Download paper: http://link.springer.com/chapter/10.1007/978-3-642-40722-2_13#!
 
-If you use the work in your researches, please cite the paper. All rights reserved.
+Currently, the phrase tagset mapping work and the open source code cover 9 treebanks and the following languages: 
 
-Contact: hanlifengaaron AT gmail.com
+Chinese, English, French, German, Czech, Spanish, Arabic, Korean, …. 
+
+The phrase tagset mapping codes of other languages and treebanks will be uploaded soon. If you use the universal phrase
+tagset or the phrase tagset mapping work in your research, please cite above paper. 
+
+See this Appendix for: phrase tagset mapping table from language and Treebank specific phrase tagsets
+(phrase categories) to the universal phrase tagset.
+http://www.researchgate.net/publication/257985479_Welcome_to_Aaron_Project_A_Universal_Phrase_Tagset?ev=prf_pub 
+
+Download the source code: https://github.com/aaronlifenghan/A-Universal-Phrase-Tagset 
+
+The universal phrase tagset and mapping works are refined after a lot of researches and experiments. However,
+if you find any bug in the codes or unreasonable mapping in the table, please do not hesitate to contact us. 
+
+Email: hanlifengaaron AT gmail DOT com 
+
+Website: http://www.linkedin.com/in/aaronhan 
