@@ -20,7 +20,7 @@ tagset or the phrase tagset mapping work in your research, please cite above pap
 
 See this Appendix for: phrase tagset mapping table from language and Treebank specific phrase tagsets
 (phrase categories) to the universal phrase tagset.
-http://www.researchgate.net/publication/257985479_Welcome_to_Aaron_Project_A_Universal_Phrase_Tagset?ev=prf_pub 
+http://www.researchgate.net/publication/257994912_Welcome_to_the_Project_A_Refined_Universal_Phrase_Tagset
 
 Download the source code: https://github.com/aaronlifenghan/A-Universal-Phrase-Tagset 
 
