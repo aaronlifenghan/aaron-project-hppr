@@ -13,8 +13,21 @@
 
 ## D:\call paper\Conferences-2\test NLEPOMS\UniDeal_ppos2012\src\newstest2012-src.en\ppos
 
-open (TEST,"<:encoding(utf8)","D:\\call paper\\Conferences-2\\test NLEPOMS\\UniDeal_ppos2012\\src\\newstest2012-src.en\\ppos\\newstest2012-ref.en.tok.parsed.ppos") || die "can not open file: $!";
-open (RESULT,">:encoding(utf8)","D:\\call paper\\Conferences-2\\test NLEPOMS\\UniDeal_ppos2012\\src\\newstest2012-src.en\\ppos\\Statistical_label_wmt2012.ref.en.ppos.txt") || die "$!";
+## Oxford-dic1200.zh.parse
+
+#open (TEST,"<:encoding(utf8)","D:\\call paper\\Conferences-2\\test NLEPOMS\\UniDeal_ppos2012\\src\\newstest2012-src.en\\ppos\\newstest2012-ref.en.tok.parsed.ppos") || die "can not open file: $!";
+#open (RESULT,">:encoding(utf8)","D:\\call paper\\Conferences-2\\test NLEPOMS\\UniDeal_ppos2012\\src\\newstest2012-src.en\\ppos\\Statistical_label_wmt2012.ref.en.ppos.txt") || die "$!";
+
+open (TEST,"<:encoding(utf8)","E:\\Berkeley_Parser\\statistic\\Oxford-dic1200.zh.parse") || die "can not open file: $!";
+open (RESULT,">:encoding(utf8)","E:\\Berkeley_Parser\\statistic\\Oxford-dic1200.zh.parse.stat") || die "$!";
+
+###open (TEST,"<:encoding(utf8)","E:\\Berkeley_Parser\\statistic\\Oxford-dic12000.zh.parse") || die "can not open file: $!";
+###open (RESULT,">:encoding(utf8)","E:\\Berkeley_Parser\\statistic\\Oxford-dic12000.zh.parse.stat") || die "$!";
+
+# open (TEST,"<:encoding(utf8)","E:\\Berkeley_Parser\\statistic\\Oxford-dictionary.zh.parse") || die "can not open file: $!";
+# open (RESULT,">:encoding(utf8)","E:\\Berkeley_Parser\\statistic\\Oxford-dictionary.zh.parse.stat") || die "$!";
+
+
 				$i=0;
 				$str0="";
 				@arry_1= ();
@@ -35,14 +48,14 @@ open (RESULT,">:encoding(utf8)","D:\\call paper\\Conferences-2\\test NLEPOMS\\Un
 				close TEST;
 				print RESULT 'length of each sentence of sysoutput:',"\n","@arry_sys_length","\n",$sentence_num,"\n";
 				
-				for($i=0;$i<$sentence_num;$i++)        #####  print out the stored document to have a check whether something lost 
-					{
-						for($j=0;$j<$arry_sys_length[$i];$j++)
-							{
-								print RESULT "$arrytwo_sys_translation[$i][$j]";
-							}
-						print RESULT "\n";
-					}
+				# for($i=0;$i<$sentence_num;$i++)        #####  print out the stored document to have a check whether something lost 
+					# {
+						# for($j=0;$j<$arry_sys_length[$i];$j++)
+							# {
+								# print RESULT "$arrytwo_sys_translation[$i][$j]";
+							# }
+						# print RESULT "\n";
+					# }
         
 				@repeat_num=();
 				$m=0;
@@ -76,11 +89,20 @@ open (RESULT,">:encoding(utf8)","D:\\call paper\\Conferences-2\\test NLEPOMS\\Un
 				
 				print RESULT "\n",'number of different labels in the document:',"$m","\n";
 				print RESULT 'labels and their statistical repeat numbers:',"\n";		
-				for($i=0;$i<scalar(@record_label);$i++)    #### print out the labels and their statistical repeat numbers
-					{
-						print RESULT "$record_label[$i]"," $repeat_num[$i]","\n";
-					}
+				# for($i=0;$i<scalar(@record_label);$i++)    #### print out all the labels and their statistical repeat numbers
+					# {
+						# print RESULT "$record_label[$i]"," $repeat_num[$i]","\n";
+					# }
 				
+				for($i=0;$i<scalar(@record_label);$i++)    #### print out the selected labels (only including alphabet) and their statistical repeat numbers
+					{
+						if($record_label[$i] =~ m/[A-Za-z]/)
+							{
+								print RESULT "$record_label[$i]"," $repeat_num[$i]","\n";
+							}
+					}
+
+
 				close RESULT;
 
 
