@@ -1,0 +1,86 @@
+#!/usr/bin/perl -w 
+
+########################################################################################################################################################################################
+##    For a detailed description of this metric and source code, please read:                                                                                                      #####
+##    This code is to statistic the different lables and their corresponding occurrences in the document                                                                           #####
+##    This perl code is  written by Aaron Li-Feng Han in university of macau, 2013.01. Its written originally for the published paper:                                             #####
+##    "Phrase Tagset Mapping for French and English Treebanks and Its Application in Machine Translation Evaluation". 2013. Aaron Li-Feng Han, Derek F. Wong, Lidia S. Chao,       #####
+##    Liangye He, Shuo Li, and Ling Zhu. Proceedings of the GSCL 2013, Germany. LNCS Vol. 8105, pp. 119–131. Volume Editors: Iryna Gurevych, Chris Biemann and Torsten Zesch.      #####
+##    Source code website: https://github.com/aaronlifenghan/aaron-project-hppr                                                                                                    #####
+##    Online paper: http://www.springer.com/computer/database+management+%26+information+retrieval/book/978-3-642-40721-5                                                          #####
+##    All Copyright (c) 2013 by author Aaron Li-Feng Han < hanlifengaaron@gmail.com >                                                                                              #####
+########################################################################################################################################################################################
+
+## D:\call paper\Conferences-2\test NLEPOMS\UniDeal_ppos2012\src\newstest2012-src.en\ppos
+
+open (TEST,"<:encoding(utf8)","D:\\call paper\\Conferences-2\\test NLEPOMS\\UniDeal_ppos2012\\src\\newstest2012-src.en\\ppos\\newstest2012-ref.en.tok.parsed.ppos") || die "can not open file: $!";
+open (RESULT,">:encoding(utf8)","D:\\call paper\\Conferences-2\\test NLEPOMS\\UniDeal_ppos2012\\src\\newstest2012-src.en\\ppos\\Statistical_label_wmt2012.ref.en.ppos.txt") || die "$!";
+				$i=0;
+				$str0="";
+				@arry_1= ();
+				@arry_sys_length= ();
+				@arrytwo_sys_translation= ();
+				$sentence_num=0;
+				while($str0=<TEST>)                       #### put the system translation into a two dimension array @arrytwo_sys_translation
+					{
+						chomp($str0);
+						## $str0= lc ($str0);   ### both reference and system output translation is turned into lowwer case
+						@arry_1= split(/\s+/,$str0);
+						$arry_sys_length[$i]=scalar(@arry_1);       #### @arry_sys_length store the lengths of every sentence(line) of the system translation.
+						$i++;
+						push @arrytwo_sys_translation, [@arry_1];
+						@arry_1= ();
+					}
+				$sentence_num=$i;
+				close TEST;
+				print RESULT 'length of each sentence of sysoutput:',"\n","@arry_sys_length","\n",$sentence_num,"\n";
+				
+				for($i=0;$i<$sentence_num;$i++)        #####  print out the stored document to have a check whether something lost 
+					{
+						for($j=0;$j<$arry_sys_length[$i];$j++)
+							{
+								print RESULT "$arrytwo_sys_translation[$i][$j]";
+							}
+						print RESULT "\n";
+					}
+        
+				@repeat_num=();
+				$m=0;
+				
+				@record_label=();    ####@record_label store the name of each label in documents 
+				for($i=0;$i<$sentence_num;$i++)        #####  store the repeated number of each label into @repeat_num 
+					{
+						for($j=0;$j<$arry_sys_length[$i];$j++)
+							{
+								$flag=0;
+								for($count=0;$count<scalar(@record_label);$count++)
+									{
+										if($record_label[$count] eq $arrytwo_sys_translation[$i][$j])
+											{
+												$repeat_num[$count]++;
+												$flag=1;
+												last;
+											}
+									}
+								if($flag==0)
+									{
+										$record_label[$m]=$arrytwo_sys_translation[$i][$j];     #### record each new label
+										$repeat_num[$count]++;
+										$m++;
+									}
+								
+								# #if(!(grep(/^$arrytwo_sys_translation[$i][$j]/, @record_label)))  
+
+							}
+					}
+				
+				print RESULT "\n",'number of different labels in the document:',"$m","\n";
+				print RESULT 'labels and their statistical repeat numbers:',"\n";		
+				for($i=0;$i<scalar(@record_label);$i++)    #### print out the labels and their statistical repeat numbers
+					{
+						print RESULT "$record_label[$i]"," $repeat_num[$i]","\n";
+					}
+				
+				close RESULT;
+
+
