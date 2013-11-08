@@ -10,17 +10,14 @@ international conference of the German Society for Computational Linguistics and
 Darmstadt, Germany. LNCS Vol. 8105, pp. 119–131. Springer-Verlag Berlin Heidelberg. 
 Download paper: http://link.springer.com/chapter/10.1007/978-3-642-40722-2_13#!
 
-Currently, the phrase tagset mapping work and the open source code cover 16 treebanks and the following 15 languages:
+Currently, the phrase tagset mapping work and the open source code cover 17 treebanks and the following 16 languages:
 
 Chinese, English, French, German, Czech, Spanish, Arabic, Korean, Danish, Estonian, Hungarian, Icelandic, 
-Italian, Japanese, Swedish, …  
+Italian, Japanese, Portuguese, Swedish, …  
 
-The phrase tagset mapping codes of other languages and treebanks will be uploaded soon. If you use the universal phrase
-tagset or the phrase tagset mapping work in your research, please cite above paper. 
-
-See this Appendix for: phrase tagset mapping table from language and Treebank specific phrase tagsets
-(phrase categories) to the universal phrase tagset.
-http://www.researchgate.net/publication/257994912_Welcome_to_the_Project_A_Refined_Universal_Phrase_Tagset
+The phrase tagset mapping codes of other languages and treebanks will be uploaded soon. If you use the universal 
+phrase tagset or the phrase tagset mapping works in your research, please cite above paper.
+(C) All rights reserved. 
 
 Download the source code: https://github.com/aaronlifenghan/A-Universal-Phrase-Tagset 
 
