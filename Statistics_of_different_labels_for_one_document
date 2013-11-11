@@ -18,14 +18,17 @@
 #open (TEST,"<:encoding(utf8)","D:\\call paper\\Conferences-2\\test NLEPOMS\\UniDeal_ppos2012\\src\\newstest2012-src.en\\ppos\\newstest2012-ref.en.tok.parsed.ppos") || die "can not open file: $!";
 #open (RESULT,">:encoding(utf8)","D:\\call paper\\Conferences-2\\test NLEPOMS\\UniDeal_ppos2012\\src\\newstest2012-src.en\\ppos\\Statistical_label_wmt2012.ref.en.ppos.txt") || die "$!";
 
-open (TEST,"<:encoding(utf8)","E:\\Berkeley_Parser\\statistic\\Oxford-dic1200.zh.parse") || die "can not open file: $!";
-open (RESULT,">:encoding(utf8)","E:\\Berkeley_Parser\\statistic\\Oxford-dic1200.zh.parse.stat") || die "$!";
+##open (TEST,"<:encoding(utf8)","E:\\Berkeley_Parser\\statistic\\Oxford-dic1200.zh.parse") || die "can not open file: $!";
+##open (RESULT,">:encoding(utf8)","E:\\Berkeley_Parser\\statistic\\Oxford-dic1200.zh.parse.stat") || die "$!";
 
 ###open (TEST,"<:encoding(utf8)","E:\\Berkeley_Parser\\statistic\\Oxford-dic12000.zh.parse") || die "can not open file: $!";
 ###open (RESULT,">:encoding(utf8)","E:\\Berkeley_Parser\\statistic\\Oxford-dic12000.zh.parse.stat") || die "$!";
 
-# open (TEST,"<:encoding(utf8)","E:\\Berkeley_Parser\\statistic\\Oxford-dictionary.zh.parse") || die "can not open file: $!";
-# open (RESULT,">:encoding(utf8)","E:\\Berkeley_Parser\\statistic\\Oxford-dictionary.zh.parse.stat") || die "$!";
+####open (TEST,"<:encoding(utf8)","E:\\Berkeley_Parser\\statistic\\Oxford-dictionary.zh.parse") || die "can not open file: $!";
+####open (RESULT,">:encoding(utf8)","E:\\Berkeley_Parser\\statistic\\Oxford-dictionary.zh.parse.stat") || die "$!";
+
+open (TEST,"<:encoding(utf8)","E:\\Berkeley_Parser\\from-Luyi\\english\\test-program.txt") || die "can not open file: $!";
+open (RESULT,">:encoding(utf8)","E:\\Berkeley_Parser\\from-Luyi\\english\\test-program.txt.stat") || die "$!";
 
 
 				$i=0;
@@ -94,15 +97,24 @@ open (RESULT,">:encoding(utf8)","E:\\Berkeley_Parser\\statistic\\Oxford-dic1200.
 						# print RESULT "$record_label[$i]"," $repeat_num[$i]","\n";
 					# }
 				
-				for($i=0;$i<scalar(@record_label);$i++)    #### print out the selected labels (only including alphabet) and their statistical repeat numbers
+				# for($i=0;$i<scalar(@record_label);$i++)    #### print out the selected labels (only including alphabet) and their statistical repeat numbers
+					# {
+						# if($record_label[$i] =~ m/[A-Za-z]/)
+							# {
+								# print RESULT "$record_label[$i]"," $repeat_num[$i]","\n";
+							# }
+					# }
+
+				for($i=0;$i<scalar(@record_label);$i++)    #### print out the selected labels (only including left bracket) and their statistical repeat numbers
 					{
-						if($record_label[$i] =~ m/[A-Za-z]/)
+						if($record_label[$i] =~ m/\(/)
 							{
 								print RESULT "$record_label[$i]"," $repeat_num[$i]","\n";
 							}
 					}
 
-
+					
+					
 				close RESULT;
 
 
