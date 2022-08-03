@@ -1,4 +1,4 @@
-HPPR MT Evaluation metric - referenceless metric
+HPPR MT Evaluation metric - referenceless metric - Quality Estimation of Machine Translation - Using syntactic structure
 
 =========================
 
